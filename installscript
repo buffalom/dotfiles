@@ -69,19 +69,14 @@ echo 'install z fork'
 echo '------------'
 git clone https://github.com/agkozak/zsh-z  $HOME/.oh-my-zsh/custom/plugins/zsh-z
 
-echo 'Install node version manager (nvm)'
+echo 'Install fast node manager (fnm)'
 echo '-----------'
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+brew install fnm
 
-# source nvm stuff
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-nvm install 12
-nvm install 14
-nvm install --lts
-nvm use 16
+fnm install 12
+fnm install 14
+fnm install --lts
+fnm default lts-latest
 
 echo 'Install pkg-config'
 echo '------------------'
@@ -113,6 +108,7 @@ brew install tldr
 
 echo 'Install dig'
 echo '-----------'
+# dig is part of the bind package
 brew install bind
 
 echo 'Install nmap'
@@ -158,7 +154,7 @@ echo 'Install zsh-autosuggestions'
 echo '---------------------------'
 brew install zsh-autosuggestions
 
-echo 'Install zsh-autosuggestions'
+echo 'Install prettyping'
 echo '---------------------------'
 brew install prettyping
 
@@ -170,7 +166,7 @@ echo 'Install ffmpeg'
 echo '---------------------------'
 brew install ffmpeg
 
-echo 'Install ffmpeg'
+echo 'Install gpg'
 echo '---------------------------'
 brew install gpg
 

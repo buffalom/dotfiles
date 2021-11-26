@@ -11,6 +11,4 @@ read
 
 sudo vim /etc/pam.d/sudo
 
-
-
 sudo chmod -w /etc/pam.d/sudo

@@ -4,23 +4,6 @@ function archive() {
     zip -r "$1".zip "$1" ;
 }
 
-function ips() {
-    nameservers=(8.8.8.8 8.8.4.4 1.1.1.1 195.129.12.122 192.76.144.66 158.43.240.3 77.88.8.8)
-    type=${2:-A}
-    for i in "${nameservers[@]}";
-    do
-        echo "$i"
-        dig @"$i" +nocmd "$1" $type +multiline +noall +answer
-        echo
-    done
-}
-
-function whatgit() {
-    days=${1:-2}
-    echo "gitlogs of the last $days days"
-    cd ~/Code && git standup -s -d "$days" -D local -m 3
-}
-
 function wholisten() {
     lsof -nP -i4TCP:$1 | grep LISTEN
 }
@@ -36,32 +19,9 @@ function digga() {
     dig +nocmd "$1" "$type" +multiline +noall +answer
 }
 
-function removehost() {
-    ssh-keygen -R "$1"
-}
-
-function scanhost() {
-    ssh-keyscan -H "$1" >> ~/.ssh/known_hosts
-}
-
 function copysshkey() {
     local port=${2:-22}
     ssh-copy-id -i ~/.ssh/id_rsa $1 -p $port
-}
-
-function weather() {
-    city="$1"
-
-    if [ -z "$city" ]; then
-        city="Antwerp"
-    fi
-
-    eval "curl http://wttr.in/${city}"
-}
-
-# Scrape a single webpage with all assets
-function scrapeUrl() {
-    wget --adjust-extension --convert-links --page-requisites --span-hosts --no-host-directories "$1"
 }
 
 #  Commit everything
@@ -130,48 +90,12 @@ function scheduler() {
     done
 }
 
-function checkLinks() {
-    mixed-content-scanner scan $@
-}
-
 function watchfolder() {
     folder=${1:-$(pwd)}
 
     echo "start watching $folder"
     fswatch -r $folder
 }
-
-# Switch PHP versions
-function phpv() {
-    echo "stopping valet"
-    valet stop
-
-    echo "stopping all php services"
-    brew services list | awk '{print $1}' | grep php | while read line
-    do
-        brew services stop "$line"
-    done
-
-    echo "unlinking all php version"
-    brew unlink php@7.3 php@7.4 php@8.0
-
-    echo "link $1"
-    brew link --force --overwrite $1
-
-    echo "start $1"
-    brew services start $1
-
-    echo "install composer packages"
-    composer global update
-    cgr update
-
-    echo "installing valet"
-    valet install
-}
-
-alias php73="phpv php@7.3"
-alias php74="phpv php@7.4"
-alias php8="phpv php@8.0"
 
 # Network scanner
 function bitCountForMask {
@@ -302,16 +226,6 @@ function watchlog() {
     tail -f -n 100 storage/logs/laravel.log
 }
 
-function makeMp4() {
-    source=$1
-    target=$2
-    ffmpeg -i $source -vcodec h264 -acodec mp3 $target
-}
-
-function watchdir() {
-    watch -n 1 -d find .
-}
-
 function gitmovie() {
     echo "generating avatars from Gravatar..."
     perl "$DOTFILESDIR/misc/gen-git-avatars"
@@ -321,10 +235,6 @@ function gitmovie() {
     ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i gource.ppm -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4
     echo "cleanup..."
     rm -f gource.ppm
-}
-
-kraken () {
-    /Applications/GitKraken.app/Contents/MacOS/GitKraken -p "$(git rev-parse --show-toplevel)" &>/dev/null &
 }
 
 colorize_via_pygmentize() {
@@ -361,27 +271,8 @@ colorize_via_pygmentize() {
     done
 }
 
-# like chrome always in light theme...
-function chromeLight() {
-    defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool yes
-}
-
-# ...but need to be able to experiment with darkmode in web development
-function chromeAuto() {
-    defaults write com.google.Chrome NSRequiresAquaSystemAppearance -bool no
-}
-
 function hosts() {
     sudo code /etc/hosts
-}
-
-function testChrome() {
-    # resources
-    # - https://stackoverflow.com/questions/52095416/how-can-i-correctly-provide-a-mock-webcam-video-to-chrome
-    # - https://webrtc.org/testing/
-    # - https://gist.github.com/DamonOehlman/7329833#gistcomment-1414202
-    rm -rf $HOME/.config/chrome-test
-    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --console --no-first-run --user-data-dir=$HOME/.config/chrome-test --use-fake-device-for-media-stream --use-file-for-fake-video-capture=camfake.mjpeg --enable-logging --v=1 --vmodule="*third_party/libjingle/*=3,*=0"
 }
 
 function speedtest() {
@@ -406,19 +297,26 @@ function email-guess() {
     NOCOLOR="\033[0m"
 
     remote=`git remote -v | awk '/\(push\)$/ {print $2}'`
-    echo -e "${GREEN}Guessing email based on git repo $remote${NOCOLOR}"
-    email=okaufmann91@gmail.com # default
+    email=mail@tomdgm.ch # default
+    signingkey=E5F520B22967C1E1 # default
 
     if [[ $remote == *github.com:teamnovu* ]]; then
-        email=oliver.kaufmann@novu.ch
+        email=tom.diggelmann@novu.ch
+        signingkey=27D2441DEA447A80
     fi
-
+    if [[ $remote == *github.com:nmbrz* ]]; then
+        email=tom.diggelmann@novu.ch
+        signingkey=27D2441DEA447A80
+    fi
     if [[ $remote == *projects.lernetz.ch* ]]; then
-        email=oliver.kaufmann@novu.ch
+        email=tom.diggelmann@novu.ch
+        signingkey=27D2441DEA447A80
     fi
 
     echo -e "${GREEN}Configuring user.email as $email${NOCOLOR}"
     git config user.email $email
+    echo -e "${GREEN}Configuring user.signingkey as $signingkey${NOCOLOR}"
+    git config user.signingkey $signingkey
 }
 
 function shush() {
@@ -431,9 +329,4 @@ function mitm() {
 
 function silent() {
    "$@" >& /dev/null
-}
-
-function kraken() {
-    dir="$(cd "$(dirname "$1")" > /dev/null; pwd -P)/$(basename "$1")"
-    open gitkraken://repo/$dir
 }

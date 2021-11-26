@@ -6,6 +6,11 @@ brew install php@7.3
 brew install php@7.4
 brew install php@8.0
 
+echo 'Install phpmon'
+echo '-----------------'
+brew tap nicoverbruggen/homebrew-cask
+brew install --cask phpmon
+
 echo 'Install php-yaml'
 echo '-----------------'
 brew install libyaml
@@ -31,7 +36,6 @@ brew install composer
 echo 'Install laravel envoy'
 echo '---------------------'
 composer global require laravel/envoy
-
 
 echo 'Install laravel installer'
 echo '---------------------'

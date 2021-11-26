@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/okaufmann/.oh-my-zsh
+export ZSH=/Users/tom/.oh-my-zsh
 
 # Setup xdebug
 export XDEBUG_CONFIG="idekey=VSCODE"
@@ -11,7 +11,7 @@ export XDEBUG_CONFIG="idekey=VSCODE"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="remy"
-DEFAULT_USER="okaufmann"
+DEFAULT_USER="tom"
 
 # CONFIG SPACESHIP
 # based on https://gist.github.com/PierreThiollent/9087a26d56e0704c263baf7e1a5f3827
@@ -171,9 +171,8 @@ unset file
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# FNM
+eval "$(fnm env)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

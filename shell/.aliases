@@ -23,6 +23,7 @@ alias phpunit="vendor/bin/phpunit"
 alias phpunitw="phpunit-watcher watch"
 alias pest="./vendor/bin/pest"
 alias pestw="pest --watch $@"
+alias expose="/opt/homebrew/Cellar/php@8.0/8.0.13/bin/php ~/.composer/vendor/bin/expose"
 
 # Laravel
 # ---------------

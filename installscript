@@ -55,10 +55,12 @@ ln -s $HOME/.dotfiles/shell/.vimrc $HOME/.vimrc
 rm $HOME/.vim
 ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
 
-echo 'Install zsh theme remy'
+echo 'Install zsh theme'
 echo '------------'
 rm $HOME/.oh-my-zsh/custom/themes/remy.zsh-theme || true
+rm $HOME/.oh-my-zsh/custom/themes/cobalt2.zsh-theme || true
 ln -s $HOME/.dotfiles/zshrc/remy.zsh-theme $HOME/.oh-my-zsh/custom/themes/remy.zsh-theme
+ln -s $HOME/.dotfiles/zshrc/cobalt2.zsh-theme $HOME/.oh-my-zsh/custom/themes/cobalt2.zsh-theme
 
 echo 'Activate z'
 echo '------------'

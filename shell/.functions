@@ -57,7 +57,7 @@ function phpversion() {
 function phprestart() {
     currentVersion=$(phpversion)
     brew services restart "php@${currentVersion}"
-    valet restart
+    herd restart
 }
 
 function xdebug() {

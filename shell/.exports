@@ -31,7 +31,7 @@ export COMPOSER_MEMORY_LIMIT=-1
 export PATH="/Users/${USER}/google-cloud-sdk/bin:$PATH"
 
 # Tools
-export PATH="/Users/${USER}/Code/tools:$PATH"
+export PATH="/Users/${USER}/Projects/tools:$PATH"
 
 # Android SDK
 export ANDROID_HOME="/Users/${USER}/Library/Android/sdk"
@@ -39,9 +39,9 @@ export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 export PATH="/Users/${USER}/Library/Android/sdk/emulator:$PATH"
 
 # Go
-export GOPATH=$HOME/Code/go-workspace
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/go-workspace
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
 export PATH="/usr/local/sbin:$PATH"
 
 # Prefer US English and use UTF-8

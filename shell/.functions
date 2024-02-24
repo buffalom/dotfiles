@@ -130,7 +130,7 @@ function scanNetwork() {
 }
 
 function removeVendors() {
-    local projectsFolder='~/Code';
+    local projectsFolder='~/Projects';
     local folder="${1:-$projectsFolder}";
     cd $folder && find . -name "node_modules" -exec rm -rf '{}' +
     cd $folder && find . -name "vendor" -exec rm -rf '{}' +

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-echo 'Install php'
-echo '-----------'
-brew install php@7.3
-brew install php@7.4
-brew install php@8.0
+# echo 'Install php'
+# echo '-----------'
+# brew install php@7.3
+# brew install php@7.4
+# brew install php@8.0
 
 echo 'Install phpmon'
 echo '-----------------'
@@ -51,8 +51,8 @@ composer global require friendsofphp/php-cs-fixer
 
 composer global require beyondcode/expose
 
-echo 'Install laravel valet'
-echo '---------------------'
-composer global require laravel/valet
-valet trust
-valet install
+# echo 'Install laravel valet'
+# echo '---------------------'
+# composer global require laravel/valet
+# valet trust
+# valet install

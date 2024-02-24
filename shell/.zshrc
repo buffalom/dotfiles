@@ -174,6 +174,9 @@ unset file
 # FNM
 eval "$(fnm env --use-on-cd)"
 
+# Github Copilot CLI
+eval "$(github-copilot-cli alias -- "$0")"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # yarn

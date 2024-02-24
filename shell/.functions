@@ -300,6 +300,10 @@ function email-guess() {
     email=mail@tomdgm.ch # default
     signingkey=E5F520B22967C1E1 # default
 
+    if [[ $remote == *gitlab.com:JKwebGmbH* ]]; then
+        email=tom.diggelmann@novu.ch
+        signingkey=27D2441DEA447A80
+    fi
     if [[ $remote == *github.com:teamnovu* ]]; then
         email=tom.diggelmann@novu.ch
         signingkey=27D2441DEA447A80

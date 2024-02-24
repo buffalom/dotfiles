@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+function continue_prompt {
+    local yn
+    while true; do
+        echo "Do you want to continue? (y/n) "
+        read yn
+        case $yn in
+            [Yy]* ) return 0;;
+            [Nn]* ) return 1;;
+            * ) echo "Please answer y or n.";;
+        esac
+    done
+}
+
 function archive() {
     zip -r "$1".zip "$1" ;
 }
@@ -333,4 +346,188 @@ function mitm() {
 
 function silent() {
    "$@" >& /dev/null
+}
+
+function checkAwsProfile() {
+    # check if the given parameter (a certain profile) is set in the file ~/.aws/credentials if not echo an example and exit with 1
+    local profile=$1
+    local file=~/.aws/credentials
+    local example=$(\cat << EOF
+[$profile]
+aws_access_key_id = <your access key>
+aws_secret_access_key = <your secret key>
+EOF
+)
+
+    if ! grep -q "\[$profile\]" $file; then
+        # echo the following lines in red and reset afterwards
+        tput setaf 1
+        echo "AWS Profile $profile not found in $file"
+        echo "Make sure you have a profile with the name $profile and the correct permissions in $file"
+        echo ""
+        echo "Example:"
+        echo "$example"
+        tput sgr0
+        return 1
+    fi
+
+    return 0
+}
+
+function createS3UserWithPolicy() {
+    local username=$1
+    local bucket=$2
+    local profile=$3
+    local argsIam=(--profile $3 --endpoint-url=https://iam.wasabisys.com)
+
+    checkAwsProfile $profile || return 1
+
+
+    # use backspace to ensure alias of cat is not used!
+    local policy=$(\cat << EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Sid": "AllowAllS3Actions",
+          "Effect": "Allow",
+          "Action": [
+              "s3:*"
+          ],
+          "Resource": [
+              "arn:aws:s3:::$bucket",
+              "arn:aws:s3:::$bucket/*"
+          ]
+      }
+  ]
+}
+EOF
+)
+
+    echo "Creating User $username"
+    aws iam create-user $argsIam \
+        --user-name $username
+
+    echo "Creating policy to allow access to bucket $username"
+    local policyArn=$(aws iam create-policy $argsIam \
+        --policy-name $username \
+        --policy-document ${policy} \
+        --output json | jq -r .Policy.Arn)
+
+    echo "Attaching policy $policyArn to user $username"
+    aws iam attach-user-policy $argsIam \
+        --user-name $username \
+        --policy-arn $policyArn
+
+    echo "Creating access key and secret for user $username and echo"
+    local accessKeyResult=$(aws iam create-access-key $argsIam \
+        --user-name $username \
+        --output json)
+    echo
+    echo -n "Access Key ID: "
+    echo $accessKeyResult | jq -r .AccessKey.AccessKeyId
+    echo -n "Access Secret: "
+    echo $accessKeyResult | jq -r .AccessKey.SecretAccessKey
+}
+
+function setupS3Bucket() {
+    local name=$1
+    local profile=$2
+    local defaultRegion="eu-central-2"
+    local region="${3:-$defaultRegion}"
+    local args=(--profile $profile --endpoint-url="https://s3.${region}.wasabisys.com")
+
+    checkAwsProfile $profile || return 1
+
+    echo
+    echo "Creating the following resources in region $region using profile $profile:"
+    echo "- bucket $name"
+    echo "- user $name"
+    echo "- policy $name"
+    echo
+
+    if  ! continue_prompt; then
+        return
+    fi
+
+
+    echo "Creating bucket $name in region $region"
+    aws s3api create-bucket $args \
+        --bucket $name
+
+    createS3UserWithPolicy $name $name $profile
+
+    echo
+    echo "Endpoint for bucket $name is https://s3.${region}.wasabisys.com"
+    echo "Open in Wasabi Console: https://console.wasabisys.com/#/file_manager/${name}?region=${region}"
+    echo
+    echo "Bucket $name created"
+}
+
+function deleteS3User() {
+    local name=$1
+    local profile=$2
+    local argsIam=(--profile $profile --endpoint-url=https://iam.wasabisys.com)
+
+    checkAwsProfile $profile || return 1
+
+    echo "Detaching all policies from user $name"
+    aws iam list-attached-user-policies $argsIam \
+        --user-name $name \
+        --output json | jq -r '.AttachedPolicies[].PolicyArn' | while read policyArn; do
+        aws iam detach-user-policy $argsIam \
+            --user-name $name \
+            --policy-arn $policyArn
+    done
+
+    echo "Deleting all access keys for user $name"
+    aws iam list-access-keys $argsIam \
+        --user-name $name \
+        --output json | jq -r '.AccessKeyMetadata[].AccessKeyId' | while read accessKeyId; do
+        aws iam delete-access-key $argsIam \
+            --user-name $name \
+            --access-key-id $accessKeyId
+    done
+
+    local policyArn=$(aws iam list-policies $argsIam \
+        --output json | jq -r ".Policies[] | select(.PolicyName == \"$name\") | .Arn")
+    echo "Deleting policy $policyArn"
+    aws iam delete-policy $argsIam \
+        --policy-arn $policyArn
+
+    echo "Deleting user $name"
+    aws iam delete-user $argsIam \
+        --user-name $name
+}
+
+function destroyS3Resources() {
+    local name=$1
+    local profile=$2
+    local defaultRegion="eu-central-2"
+    local region="${3:-$defaultRegion}"
+    local args=(--profile $profile --endpoint-url="https://s3.${region}.wasabisys.com")
+
+    checkAwsProfile $profile || return 1
+
+    echo
+    echo "Deleting the following resources in region $region with profile $profile:"
+    echo "- bucket $name"
+    echo "- user $name"
+    echo "- policy $name"
+    echo
+
+    if  ! continue_prompt; then
+        return
+    fi
+    if  ! continue_prompt; then
+        return
+    fi
+
+    deleteS3User $name $profile
+
+    echo "Deleting bucket $name"
+    aws s3api delete-bucket $args \
+        --bucket $name
+
+    echo "Bucket $name destroyed"
 }

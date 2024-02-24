@@ -41,6 +41,8 @@ git config --global core.eol native
 git config --global core.editor "code --wait"
 # Register git hooks
 git config --global core.hooksPath ~/.dotfiles/git-hooks
+# Set gpg binary path
+git config --global gpg.program $(which gpg)
 
 echo 'Create symlinks'
 echo '------------'

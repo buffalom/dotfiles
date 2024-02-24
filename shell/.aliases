@@ -44,6 +44,7 @@ alias please="php please"
 alias migrate="php artisan migrate"
 alias fresh='php artisan migrate:fresh --seed'
 alias rollback="php artisan migrate:rollback --step=1"
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 # SSH
 # ---------------

@@ -23,7 +23,19 @@ alias phpunit="vendor/bin/phpunit"
 alias phpunitw="phpunit-watcher watch"
 alias pest="./vendor/bin/pest"
 alias pestw="pest --watch $@"
-alias expose="/opt/homebrew/Cellar/php@8.0/8.0.13/bin/php ~/.composer/vendor/bin/expose"
+alias expose="php8.0 ~/.composer/vendor/bin/expose"
+
+alias php8.3="~/Library/Application\ Support/Herd/bin/php83"
+alias php8.2="~/Library/Application\ Support/Herd/bin/php82"
+alias php8.1="~/Library/Application\ Support/Herd/bin/php81"
+alias php8.0="~/Library/Application\ Support/Herd/bin/php80"
+alias php7.4="~/Library/Application\ Support/Herd/bin/php74"
+
+alias composer8.3="php8.3 $(which composer)"
+alias composer8.2="php8.2 $(which composer)"
+alias composer8.1="php8.1 $(which composer)"
+alias composer8.0="php8.0 $(which composer)"
+alias composer7.4="php7.4 $(which composer)"
 
 # Laravel
 # ---------------

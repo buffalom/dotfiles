@@ -72,8 +72,8 @@ function sshkey() {
     local keysPath="$HOME/.ssh"
     local fileName="${1}"
     local curve="${4:-ed25519}"
-    local defaultEmail="okaufmann91@gmail.com"
-    local defaultName="Oliver Kaufmann"
+    local defaultEmail="mail@tomdgm.ch"
+    local defaultName="Tom Diggelmann"
     local name="${3:-$defaultName}"
     local email="${2:-$defaultEmail}"
 

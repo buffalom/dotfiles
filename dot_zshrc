@@ -12,7 +12,7 @@ export DOTFILES=$(chezmoi source-path)
 export COMPLETION_WAITING_DOTS=true
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/okaufmann/.oh-my-zsh
+export ZSH=/Users/tom/.oh-my-zsh
 
 # Setup xdebug
 export XDEBUG_CONFIG="idekey=PHPSTORM"
@@ -22,7 +22,7 @@ export XDEBUG_CONFIG="idekey=PHPSTORM"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="remy"
 # ZSH_THEME="cobalt2"
-DEFAULT_USER="okaufmann"
+DEFAULT_USER="tom"
 
 # CONFIG SPACESHIP
 # based on https://gist.github.com/PierreThiollent/9087a26d56e0704c263baf7e1a5f3827

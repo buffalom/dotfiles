@@ -45,7 +45,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --ssh {your github user nam
 
 Feel free to create an issue on this repo if you have any questions about them.
 
-![screenshot](https://okaufmann.github.io/dotfiles/screenshot.png)
+![screenshot](https://buffalom.github.io/dotfiles/screenshot.png)
 
 ## Update
 

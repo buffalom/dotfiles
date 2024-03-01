@@ -55,11 +55,11 @@ brew 'svgo'
 brew 'gifsicle'
 
 # PHP Dependencies
-brew 'php'
-brew 'php@8.1'
-brew 'php@8.0'
-brew 'php@7.4'
-brew 'composer'
+# brew 'php'
+# brew 'php@8.1'
+# brew 'php@8.0'
+# brew 'php@7.4'
+# brew 'composer'
 brew 'libyaml'
 brew 'imagemagick'
 
@@ -84,18 +84,20 @@ cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
 
  # Apps
-cask "keepingyouawake"
-cask "phpmon"
+# cask "keepingyouawake"
+# cask "phpmon"
+cask "herd"
 cask 'discord'
 cask 'docker'
-cask 'insomnia'
+# cask 'insomnia'
+cask 'postman'
 cask 'ray'
 cask 'slack'
 cask 'visual-studio-code'
-cask 'zoom'
-cask 'helo'
+# cask 'zoom'
+# cask 'helo'
 cask 'telegram-desktop'
-cask 'tinkerwell'
+# cask 'tinkerwell'
 cask '1password-cli'
 
 # Quicklook
@@ -116,4 +118,4 @@ cask "qlimagesize"
 # mas 'Spark', id: 1176895641
 # mas 'Speedtest', id: 1153157709
 # mas 'Things', id: 904280696
-mas 'Tweetbot', id: 1384080005
+# mas 'Tweetbot', id: 1384080005

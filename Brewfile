@@ -25,7 +25,7 @@ brew "nmap"
 brew "fzf"
 brew "bat"
 brew "fx"
-brew "exa"
+# brew "exa" # deprecated
 brew "fswatch"
 brew "ghostscript"
 brew "zsh-autosuggestions"

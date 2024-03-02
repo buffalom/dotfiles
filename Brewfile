@@ -72,6 +72,7 @@ brew 'nginx'
 # brew 'node'
 brew 'redis', restart_service: true
 brew 'yarn'
+brew 'pnpm'
 
 # Fonts
 cask "font-fira-code"

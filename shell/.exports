@@ -146,7 +146,4 @@ export TELEPORT_USE_LOCAL_SSH_AGENT=false
 
 export BAT_THEME="Coldark-Dark"
 
-# set config path for lazygit
-export XDG_CONFIG_HOME="$HOME/.config"
-
 [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh

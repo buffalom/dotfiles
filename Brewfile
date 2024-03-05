@@ -4,7 +4,6 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 tap '1password/tap'
-tap 'jesseduffield/lazygit'
 tap 'siderolabs/talos'
 tap 'norwoodj/tap'
 tap 'ngrok/ngrok'
@@ -43,7 +42,6 @@ brew 'libpq' # PostgresQL client
 brew 'jq' # JSON parser
 brew 'git'
 brew 'git-delta' # Git diff viewer
-brew 'lazygit'
 brew 'pre-commit' # Git hooks
 brew 'sops'
 brew 'age'

@@ -83,8 +83,6 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/tom/Library/Application Support/Herd/con
 # Herd injected PHP binary.
 export PATH="/Users/tom/Library/Application Support/Herd/bin/":$PATH
 
-PATH=~/.console-ninja/.bin:$PATH
-
 # NPM
 export  NPM_PACKAGES="${HOME}/.npm-packages" # Sudoless npm https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 export  PATH="$NPM_PACKAGES/bin:$PATH"
@@ -139,6 +137,9 @@ esac
 eval "$(github-copilot-cli alias -- "$0")"
 
 eval $(thefuck --alias)
+
+# VSCode Extension Console Ninja – https://marketplace.visualstudio.com/items?itemName=WallabyJs.console-ninja
+export PATH="~/.console-ninja/.bin:$PATH"
 
 export KUBE_EDITOR='code --wait'
 export TALOS_EDITOR='code --wait'

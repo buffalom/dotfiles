@@ -72,10 +72,8 @@ function sshkey() {
     local keysPath="$HOME/.ssh"
     local fileName="${1}"
     local curve="${4:-ed25519}"
-    local defaultEmail="mail@tomdgm.ch"
-    local defaultName="Tom Diggelmann"
-    local name="${3:-$defaultName}"
-    local email="${2:-$defaultEmail}"
+    local name=""
+    local email=""
 
     # if file name exists abort
     if [ -f "$keysPath/$fileName" ]; then

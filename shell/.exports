@@ -124,7 +124,7 @@ add-zsh-hook chpwd load-nvmrc
 # load-nvmrc
 
 # pnpm
-export PNPM_HOME="~/Library/pnpm"
+export PNPM_HOME=~/Library/pnpm
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -136,7 +136,7 @@ eval "$(gh copilot alias -- bash)"
 eval $(thefuck --alias)
 
 # VSCode Extension Console Ninja – https://marketplace.visualstudio.com/items?itemName=WallabyJs.console-ninja
-export PATH="~/.console-ninja/.bin:$PATH"
+export PATH=~/.console-ninja/.bin:$PATH
 
 export KUBE_EDITOR='code --wait'
 export TALOS_EDITOR='code --wait'

@@ -4,7 +4,6 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 tap '1password/tap'
-tap 'jesseduffield/lazygit'
 tap 'norwoodj/tap'
 tap 'ngrok/ngrok'
 tap 'siderolabs/tap'
@@ -60,7 +59,6 @@ brew 'gource'
 
 # Kubernetes
 brew 'kubernetes-cli' # kubectl and dependencie for other plugins
-brew 'talosctl'
 brew 'helm'
 brew 'helm-docs'
 brew 'velero'

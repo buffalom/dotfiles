@@ -131,8 +131,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-eval "$(github-copilot-cli alias -- "$0")"
-
 eval $(thefuck --alias)
 
 # VSCode Extension Console Ninja – https://marketplace.visualstudio.com/items?itemName=WallabyJs.console-ninja

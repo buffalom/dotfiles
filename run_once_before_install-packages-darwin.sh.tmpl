@@ -58,6 +58,10 @@ echo 'Install php environment'
 echo '---------------------------'
 sh "$(chezmoi source-path)/install/php-env.sh"
 
+echo 'Install gh extensions'
+echo '---------------------------'
+gh extension install github/gh-copilot
+
 echo '++++++++++++++++++++++++++++++'
 echo 'All done!'
 echo 'Things to do to make the agnoster terminal theme work:'

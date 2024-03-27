@@ -38,7 +38,7 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # Composer and PHP
 export PATH="$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$PATH"
-export PATH="~/.config/phpmon/bin:$PATH"
+# export PATH="~/.config/phpmon/bin:$PATH"
 export COMPOSER_MEMORY_LIMIT=-1
 export PHP_CS_FIXER_IGNORE_ENV=true
 

@@ -1,14 +1,17 @@
-tap 'homebrew/cask'
+# tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'nicoverbruggen/homebrew-cask'
 tap '1password/tap'
-tap 'siderolabs/talos'
+tap 'jesseduffield/lazygit'
 tap 'norwoodj/tap'
 tap 'ngrok/ngrok'
+tap 'siderolabs/tap'
 
 # Binaries
+brew 'chezmoi'
+brew 'mas'
 brew 'bash' # Latest Bash version
 brew 'zsh'
 brew 'zoxide'
@@ -53,6 +56,7 @@ brew 'make'
 brew 'w3m'
 brew 'dante'
 brew 'thefuck'
+brew 'gource'
 
 # Kubernetes
 brew 'kubernetes-cli' # kubectl and dependencie for other plugins
@@ -77,48 +81,44 @@ brew 'gifsicle'
 
 # PHP Dependencies
 # brew 'php'
+# brew 'php@8.2'
 # brew 'php@8.1'
 # brew 'php@8.0'
 # brew 'php@7.4'
 # brew 'composer'
-brew 'libyaml'
-brew 'imagemagick'
+# brew 'libyaml'
+# brew 'imagemagick'
 
 # Valet
-brew 'dnsmasq'
-brew 'mysql', restart_service: true
-brew 'nginx'
-brew 'redis', restart_service: true
-brew 'yarn'
-brew 'pnpm'
+# brew 'dnsmasq'
+# brew 'mysql', restart_service: true
+# brew 'nginx'
+# brew 'redis', restart_service: true
 
 # Fonts
 cask 'font-fira-code'
 cask 'font-fira-code-nerd-font'
 cask 'font-open-sans'
 cask 'font-roboto'
-cask 'font-menlo-for-powerline'
-cask 'font-source-code-pro-for-powerline'
-cask 'font-source-code-pro'
-cask 'font-source-sans-pro'
-cask 'font-source-serif-pro'
 
  # Apps
-# cask 'keepingyouawake'
-# cask 'phpmon'
 cask 'herd'
+cask 'raycast'
+cask 'appcleaner'
+cask 'setapp'
 cask 'discord'
 cask 'docker'
-# cask 'insomnia'
 cask 'postman'
-cask 'ray'
 cask 'slack'
+cask 'notion'
+cask 'sonos'
+cask 'spotify'
+cask 'raindropio'
 cask 'visual-studio-code'
-# cask 'zoom'
-# cask 'helo'
-cask 'telegram-desktop'
-# cask 'tinkerwell'
+cask 'tinkerwell'
 cask '1password-cli'
+# cask 'ray'
+# cask 'helo'
 
 # Quicklook
 cask 'syntax-highlight'

@@ -29,3 +29,8 @@ Host *
 
     # Use TCP keepalive messages.
     TCPKeepAlive yes
+
+# https://stackoverflow.com/a/52817036
+Host github.com
+    Hostname ssh.github.com
+    Port 443

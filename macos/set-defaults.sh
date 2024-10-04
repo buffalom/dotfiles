@@ -438,7 +438,7 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Autimatcally hide the menu bar
+# Automatically hide the menu bar
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 
 # Make Dock icons of hidden applications translucent

@@ -135,9 +135,6 @@ eval "$(gh copilot alias -- bash)"
 
 eval $(thefuck --alias)
 
-# VSCode Extension Console Ninja – https://marketplace.visualstudio.com/items?itemName=WallabyJs.console-ninja
-export PATH=~/.console-ninja/.bin:$PATH
-
 export KUBE_EDITOR='code --wait'
 export TALOS_EDITOR='code --wait'
 

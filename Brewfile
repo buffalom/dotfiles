@@ -7,6 +7,8 @@ tap '1password/tap'
 tap 'norwoodj/tap'
 tap 'ngrok/ngrok'
 tap 'siderolabs/tap'
+tap 'fairwindsops/tap'
+tap 'fluxcd/tap'
 
 # Binaries
 brew 'chezmoi'
@@ -27,6 +29,7 @@ brew 'tldr'
 brew 'bind' # used to have dig as binary
 brew 'nmap'
 brew 'fzf'
+brew 'fd'
 brew 'bat'
 brew 'fx'
 brew 'eza'
@@ -38,6 +41,7 @@ brew 'ettercap'
 brew 'ffmpeg'
 brew 'gpg'
 brew 'ocrmypdf'
+brew 'tesseract-lang'
 brew 'svn' # Needed to install fonts
 brew 'mas' # Mac App Store manager
 brew 'libpq' # PostgresQL client
@@ -56,6 +60,13 @@ brew 'w3m'
 brew 'dante'
 brew 'thefuck'
 brew 'gource'
+brew 'awscli'
+brew 'tree'
+brew 'mysql-client'
+brew 'ansible'
+brew 'yq'
+brew 'watch'
+brew 'packer'
 
 # Kubernetes
 brew 'kubernetes-cli' # kubectl and dependencie for other plugins
@@ -69,6 +80,9 @@ brew 'kubectx'
 brew 'kubent' # check your clusters for use of deprecated APIs
 brew 'kustomize'
 brew 'restic'
+brew 'fairwindsops/tap/nova'
+brew 'fluxcd/tap/flux'
+brew 'dive'
 
 # Spatie Medialibrary
 brew 'jpegoptim'
@@ -116,6 +130,8 @@ cask 'raindropio'
 cask 'visual-studio-code'
 cask 'tinkerwell'
 cask '1password-cli'
+cask 'mackup'
+cask 'sensiblesidebuttons'
 # cask 'ray'
 # cask 'helo'
 

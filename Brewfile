@@ -134,6 +134,10 @@ cask '1password-cli'
 # cask 'sensiblesidebuttons'
 # cask 'ray'
 # cask 'helo'
+cask 'protonvpn'
+cask 'proton-mail'
+cask 'proton-drive'
+cask 'onedrive'
 
 # Quicklook
 cask 'syntax-highlight'

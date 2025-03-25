@@ -1,5 +1,6 @@
 Include conf.d/private
 Include conf.d/company
+Include ~/.ssh/1Password/config
 
 # Global Settings
 Host *

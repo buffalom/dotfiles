@@ -76,6 +76,10 @@ echo 'Install gh extensions'
 echo '---------------------------'
 gh extension install github/gh-copilot
 
+echo 'Configure SSH_AUTH_SOCK globally for every client'
+echo '---------------------------'
+launchctl load -w ~/Library/LaunchAgents/com.1password.SSH_AUTH_SOCK.plist
+
 echo '++++++++++++++++++++++++++++++'
 echo 'All done!'
 echo 'Things to do to make the agnoster terminal theme work:'
